@@ -1,0 +1,26 @@
+package Automation.Frameworkdesign;
+
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class SearchProduct {
+	String sourceCity="Bengaluru, India";
+	public static void main(String[] args) throws InterruptedException {
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://www.flipkart.com/");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		Actions action=new Actions(driver);
+		action.moveToElement(driver.findElement(By.name("q"))).click().sendKeys("Mobile").keyDown(Keys.ENTER).build().perform();
+		driver.quit();
+	}
+}
