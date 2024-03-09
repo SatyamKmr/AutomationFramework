@@ -1,0 +1,37 @@
+package Automation.Frameworkdesign;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class SearchFlight {
+	String sourceCity="Bengaluru, India";
+	public static void main(String[] args) {
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://www.flipkart.com/");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		Actions action=new Actions(driver);
+		action.moveToElement(driver.findElement(By.name("q"))).click().keyDown(Keys.DOWN).sendKeys("Mobile").build().perform();
+//		driver.findElement(By.name("q")).sendKeys("Mobile");
+		
+//		driver.findElement(By.id("fromCity")).click();
+//		List<WebElement> cities= driver.findElements(By.xpath("//div[@class='calc60']"));
+//		for(WebElement city:cities)
+//		{
+//			System.out.println(city.getText());
+////			if(city.getText().contains("Bengaluru"));
+////			city.click();
+//		}
+
+	}
+}
